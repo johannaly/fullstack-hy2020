@@ -3,13 +3,18 @@ import './App.css'
 
 const App = () => {
     const [persons, setPersons] = useState([
-        { name: 'Arto Hellas' }
+        { name: 'Arto Hellas', number: "040-1234455" }
     ])
     const [newName, setNewName] = useState('')
+    const [newNumber, setNewNumber] = useState('')
 
 
     const handleNameChange = (event) => {
         setNewName(event.target.value)
+    }
+
+    const handleNumberChange = (event) => {
+        setNewNumber(event.target.value)
     }
 
 
@@ -17,6 +22,7 @@ const App = () => {
         event.preventDefault()
         const personObject = {
             name: newName,
+            number: newNumber
         }
 
         const names = persons.map(p => p.name)
@@ -26,8 +32,8 @@ const App = () => {
             setPersons(persons.concat(personObject))
         }
         setNewName('')
+        setNewNumber('')
     }
-
 
     return (
         <div>
@@ -37,6 +43,11 @@ const App = () => {
                 <div>
                     name: <input value={newName}
                         onChange={handleNameChange}
+                    />
+                </div>
+                <div>
+                    number: <input value = {newNumber}
+                    onChange = {handleNumberChange}
                     />
                 </div>
 
@@ -49,7 +60,7 @@ const App = () => {
             <div>
                 <ul>
                     {persons.map((person, i) =>
-                        <p key={person.name}>{person.name}</p>)
+                        <p key={person.name}>{person.name} {person.number}</p>)
                     }
                 </ul>
             </div>
