@@ -1,21 +1,9 @@
 import React, { useState } from 'react'
 import './App.css'
+import SearchForm from './components/SearchForm'
+import FilterNamesToShow from './components/FilterNamesToShow'
+import PersonForm from './components/PersonForm'
 
-const Filter = (props) => {
-    const namesMatch = props.newFilter !== ""
-    ? props.persons.filter(p => p.name.startsWith(props.newFilter))
-    : props.persons
-
-        return (
-            <div>
-                <ul>
-                    {namesMatch.map((person) =>
-                        <p key={person.name}>{person.name} {person.number}</p>)
-                    }
-                </ul>
-            </div>
-        ) 
-    }
     
 const App = () => {
     const [persons, setPersons] = useState([
@@ -62,37 +50,17 @@ const App = () => {
     return (
         <div>
             <h2>Phonebook</h2>
-            <div>
-                Filter shown with <input
-                onChange = {handleFilterChange}
-                />
-            </div>
+            <SearchForm handleFilterChange = {handleFilterChange} />
 
             <h2>Add a new</h2>
-            <form onSubmit={addName}>
-                <div>
-                    name: <input value = {newName}
-                        onChange={handleNameChange}
-                    />
-                </div>
-                <div>
-                    number: <input value = {newNumber}
-                    onChange = {handleNumberChange}
-                    />
-                </div>
-
-                <div>
-                    <button type="submit">add</button>
-                </div>
-            </form>
-
-            <h2>Numbers</h2>
-            <div>
-                <Filter persons = {persons} newFilter = {newFilter} />
-            </div>
+            <PersonForm addName = {addName} newName = {newName} newNumber = {newNumber}
+                handleNameChange = {handleNameChange} handleNumberChange = {handleNumberChange}
+            />
             
+            <h2>Numbers</h2>
+            <FilterNamesToShow persons = {persons} newFilter = {newFilter} />
         </div>
-        )
+    )
 }
 
 export default App
