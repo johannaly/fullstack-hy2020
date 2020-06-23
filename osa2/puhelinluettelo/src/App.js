@@ -49,11 +49,24 @@ const App = () => {
             personService
                 .create(personObject)
                 .then(person => {
+                    console.log("Updating persons")
                     setPersons(persons.concat(person))
                 })
         }
         setNewName('')
         setNewNumber('')
+    }
+
+    const deleteOnePerson = (event) => {
+       
+        if (window.confirm(`Delete ${event.target.value}?`)) {
+            const personId = event.target.id.toString()
+            personService
+                .deletePerson(event.target.id)
+                .then (data => {
+                    setPersons(persons.filter(p => p.id.toString() !== personId))
+                })
+        }
     }
 
     return (
@@ -67,7 +80,7 @@ const App = () => {
             />
             
             <h2>Numbers</h2>
-            <FilterNamesToShow persons = {persons} newFilter = {newFilter} />
+            <FilterNamesToShow persons = {persons} newFilter = {newFilter} deleteOnePerson = {deleteOnePerson} />
         </div>
     )
 }

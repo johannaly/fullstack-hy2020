@@ -1,49 +1,14 @@
 {
   "persons": [
     {
-      "name": "Arto Hellas",
-      "number": "040-123456",
-      "id": 1
-    },
-    {
-      "name": "Ada Lovelace",
-      "number": "39-44-5323523",
-      "id": 2
-    },
-    {
-      "name": "Dan Abramov",
-      "number": "12-43-234345",
-      "id": 3
-    },
-    {
-      "name": "Mary Poppendieck",
-      "number": "39-23-6423122",
-      "id": 4
-    },
-    {
-      "name": "Johanna",
-      "number": "0786762321",
+      "name": "Ada Lowelace",
+      "number": "43-342132141",
       "id": 5
     },
     {
-      "name": "Elsa Männistö",
-      "number": "09-8765432",
+      "name": "Johanna Lyytinen",
+      "number": "56-4353243",
       "id": 6
-    },
-    {
-      "name": "Uusi Heikkinen",
-      "number": "567-334543",
-      "id": 7
-    },
-    {
-      "name": "Matami Aatelinen",
-      "number": "098-6543221",
-      "id": 8
-    },
-    {
-      "name": "Heikki Heikkinen",
-      "number": "34-1231142",
-      "id": 9
     }
   ]
 }
