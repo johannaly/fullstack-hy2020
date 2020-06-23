@@ -4,15 +4,11 @@ import axios from 'axios'
 import SearchForm from './components/SearchForm'
 import FilterCountriesToShow from './components/FilterCountriesToShow'
 
-//const api_key = process.env.REACT_APP_API_KEY
-
 const App = () => {
 
   const [countries, setCountries] = useState([])
   const [newFilter, setNewFilter] = useState("")
   
-
-
   useEffect(() => {
     axios
       .get("https://restcountries.eu/rest/v2/all")
@@ -20,11 +16,6 @@ const App = () => {
         setCountries(response.data)
       })
   }, [])
-
-
-  
-
-
 
   const handleFilterChange = (event) => {
     //console.log(event.target.value)

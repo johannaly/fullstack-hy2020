@@ -10,7 +10,7 @@ const FilterCountriesToShow = (props) => {
 
     if (namesToShow.length === 1) {
       return (
-        <div><CountryDetails namesToShow={namesToShow} />
+        <div><CountryDetails namesToShow = {namesToShow} />
         </div>
 
       )

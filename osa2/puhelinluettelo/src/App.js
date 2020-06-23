@@ -3,7 +3,7 @@ import './App.css'
 import SearchForm from './components/SearchForm'
 import FilterNamesToShow from './components/FilterNamesToShow'
 import PersonForm from './components/PersonForm'
-import axios from 'axios'
+import personService from './services/persons'
 
     
 const App = () => {
@@ -16,13 +16,14 @@ const App = () => {
     const[newFilter, setNewFilter] = useState("")
 
     useEffect(() => {
-        axios 
-            .get('http://localhost:3001/persons')
-            .then(response => {
-                setPersons(response.data)
-            })
+        personService
+        .getAll()
+        .then(persons => {
+            setPersons(persons)
+        })
     }, [])
     
+
     const handleNameChange = (event) => {
         setNewName(event.target.value)
     }
@@ -45,7 +46,11 @@ const App = () => {
         if (names.includes(newName)) {
             window.alert(`${newName} is already added to phonebook`)
         } else {
-            setPersons(persons.concat(personObject))
+            personService
+                .create(personObject)
+                .then(person => {
+                    setPersons(persons.concat(person))
+                })
         }
         setNewName('')
         setNewNumber('')
