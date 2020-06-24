@@ -9,8 +9,6 @@ import personService from './services/persons'
 const App = () => {
     
     const [persons, setPersons] = useState([])
-    const names = persons.map(p => p.name)
-
     const [newName, setNewName] = useState('')
     const [newNumber, setNewNumber] = useState('')
     const[newFilter, setNewFilter] = useState("")
@@ -43,13 +41,29 @@ const App = () => {
             number: newNumber
         }
         
-        if (names.includes(newName)) {
-            window.alert(`${newName} is already added to phonebook`)
+        if (persons.map(p=> p.name).includes(newName)) {
+            const personData = persons.filter(p => p.name === newName)
+            const personId = personData[0].id.toString()
+           // const testFind = (p) => p.id.toString() === personId 
+            const personIndex = persons.findIndex((p) => p.id.toString() === personId )
+            if(personData[0].number !== newNumber){  
+                window.confirm(`${newName} is already added to phonebook, replace
+                the old number with a new one?`)
+                personService
+                    .updateNumber(personId, personObject)
+                    .then (person => {
+                           const newPersons = [...persons]
+                           newPersons[personIndex] = personObject
+                           setPersons(newPersons)      
+                    })
+           } else {
+               window.alert(`${newName} is already added to phonebook`)
+           }
+        
         } else {
             personService
                 .create(personObject)
                 .then(person => {
-                    console.log("Updating persons")
                     setPersons(persons.concat(person))
                 })
         }

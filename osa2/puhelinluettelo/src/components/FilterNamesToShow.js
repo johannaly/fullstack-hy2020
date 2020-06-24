@@ -1,10 +1,6 @@
 import React from 'react'
 
-
-
-
 const FilterNamesToShow = (props) => {
-    //console.log("filter",  props.persons)
     const namesMatch = props.newFilter !== ""
     ? props.persons.filter(p => p.name.toUpperCase().startsWith(props.newFilter.toUpperCase()))
     : props.persons
