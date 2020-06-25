@@ -6,34 +6,19 @@
       "id": 5
     },
     {
-      "name": "Armi Tuomi",
-      "number": "45-4235243245",
-      "id": 8
-    },
-    {
-      "name": "Jukka Ikonen",
-      "number": "34-221100",
-      "id": 9
-    },
-    {
-      "name": "Kirsi Aimio",
-      "number": "56-3122",
-      "id": 14
-    },
-    {
-      "name": "Katri Sievi",
-      "number": "67-3243132",
-      "id": 15
-    },
-    {
       "name": "Jouni Joukonen",
       "number": "321-342213214",
       "id": 16
     },
     {
-      "name": "Minna Atlas",
-      "number": "89-432134214",
-      "id": 17
+      "name": "Armi Oinio",
+      "number": "321-213131",
+      "id": 19
+    },
+    {
+      "name": "Emilia Puro",
+      "number": "432-32143214",
+      "id": 20
     }
   ]
 }
