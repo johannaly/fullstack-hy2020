@@ -4,6 +4,7 @@ import SearchForm from './components/SearchForm'
 import FilterNamesToShow from './components/FilterNamesToShow'
 import PersonForm from './components/PersonForm'
 import personService from './services/persons'
+import Notification from './components/Notification'
 
     
 const App = () => {
@@ -12,6 +13,7 @@ const App = () => {
     const [newName, setNewName] = useState('')
     const [newNumber, setNewNumber] = useState('')
     const[newFilter, setNewFilter] = useState("")
+    const [alertMessage, setAlertMessage] = useState(null)
 
     useEffect(() => {
         personService
@@ -56,6 +58,10 @@ const App = () => {
                            newPersons[personIndex] = personObject
                            setPersons(newPersons)      
                     })
+                setAlertMessage(`Number changed for ${newName}`)
+                setTimeout(() => {
+                    setAlertMessage(null)
+                }, 3000)
            } else {
                window.alert(`${newName} is already added to phonebook`)
            }
@@ -66,7 +72,12 @@ const App = () => {
                 .then(person => {
                     setPersons(persons.concat(person))
                 })
+            setAlertMessage(`Added ${newName}`)
+            setTimeout(() => {
+                setAlertMessage(null)
+            }, 3000)
         }
+        
         setNewName('')
         setNewNumber('')
     }
@@ -80,12 +91,18 @@ const App = () => {
                 .then (data => {
                     setPersons(persons.filter(p => p.id.toString() !== personId))
                 })
+
+            setAlertMessage(`Deleted ${event.target.value}`)
+            setTimeout(() => {
+                setAlertMessage(null)
+            }, 3000)
         }
     }
 
     return (
         <div>
             <h2>Phonebook</h2>
+            <Notification message = {alertMessage} />
             <SearchForm handleFilterChange = {handleFilterChange} />
 
             <h2>Add a new</h2>

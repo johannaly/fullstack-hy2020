@@ -6,24 +6,34 @@
       "id": 5
     },
     {
-      "name": "Jussi Aulanko",
-      "number": "1111",
-      "id": 6
-    },
-    {
       "name": "Armi Tuomi",
       "number": "45-4235243245",
       "id": 8
     },
     {
       "name": "Jukka Ikonen",
-      "number": "32-13413134321",
+      "number": "34-221100",
       "id": 9
     },
     {
-      "name": "Johanna",
-      "number": "3243413134",
-      "id": 13
+      "name": "Kirsi Aimio",
+      "number": "56-3122",
+      "id": 14
+    },
+    {
+      "name": "Katri Sievi",
+      "number": "67-3243132",
+      "id": 15
+    },
+    {
+      "name": "Jouni Joukonen",
+      "number": "321-342213214",
+      "id": 16
+    },
+    {
+      "name": "Minna Atlas",
+      "number": "89-432134214",
+      "id": 17
     }
   ]
 }
