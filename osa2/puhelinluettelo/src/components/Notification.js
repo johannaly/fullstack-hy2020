@@ -8,7 +8,6 @@ const Notification = (props) => {
         return null
     }
 
-    console.log({ isAlert })
     const className = isAlert ? "error" : "notification"
     return (
         <div className={className}>
