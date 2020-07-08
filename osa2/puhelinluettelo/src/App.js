@@ -57,10 +57,10 @@ const App = () => {
 
         if (persons.map(p => p.name).includes(newName)) {
             const personData = persons.filter(p => p.name === newName)
-            const personId = personData[0].id.toString()
-            // const testFind = (p) => p.id.toString() === personId 
-            const personIndex = persons.findIndex((p) => p.id.toString() === personId)
             if (personData[0].number !== newNumber) {
+                const personId = personData[0].id.toString()
+                // const testFind = (p) => p.id.toString() === personId 
+                const personIndex = persons.findIndex((p) => p.id.toString() === personId)
                 window.confirm(`${newName} is already added to phonebook, replace
                 the old number with a new one?`)
                 personService
