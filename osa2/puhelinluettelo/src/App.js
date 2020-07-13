@@ -46,6 +46,7 @@ const App = () => {
 
     const handleFilterChange = (event) => {
         setNewFilter(event.target.value)
+
     }
 
     const addName = (event) => {
@@ -57,6 +58,7 @@ const App = () => {
 
         if (persons.map(p => p.name).includes(newName)) {
             const personData = persons.filter(p => p.name === newName)
+            
             if (personData[0].number !== newNumber) {
                 const personId = personData[0].id.toString()
                 // const testFind = (p) => p.id.toString() === personId 
@@ -66,8 +68,9 @@ const App = () => {
                 personService
                     .updateNumber(personId, personObject)
                     .then(person => {
+                        //console.log(person)
                         const newPersons = [...persons]
-                        newPersons[personIndex] = personObject
+                        newPersons[personIndex] = person
                         setPersons(newPersons)
                         setAlertMessage(`Number changed for ${newName}`)
                         setTimeout(() => {
@@ -98,9 +101,9 @@ const App = () => {
                         setAlertMessage(null)
                     }, 3000)
                 })
-                .catch(error => {
+                .catch(error => {    
                     setAlert(true)
-                    setAlertMessage(`Something went wrong`)
+                    setAlertMessage(error.response.data.error)
                     setTimeout(() => {
                         setAlertMessage(null)
                         setAlert(false)
@@ -124,6 +127,7 @@ const App = () => {
             setAlertMessage(`Deleted ${event.target.value}`)
             setTimeout(() => {
                 setAlertMessage(null)
+                setNewFilter('')
             }, 3000)
         }
     }
@@ -132,7 +136,7 @@ const App = () => {
         <div>
             <h2>Phonebook</h2>
             <Notification message={alertMessage} isAlert={isAlert} />
-            <SearchForm handleFilterChange={handleFilterChange} />
+            <SearchForm newFilter={newFilter} handleFilterChange={handleFilterChange} />
 
             <h2>Add a new</h2>
             <PersonForm addName={addName} newName={newName} newNumber={newNumber}
